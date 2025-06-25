@@ -1,0 +1,866 @@
+ ==UserStyle==
+@name           Late 2007 for StarTube by AtoZenne - Altered and Edited
+@namespace      httpsuserstyles.worlduserMrRoboto1212
+@version        20250423.13.43
+@description    Combination of Late 2007 for Startube and StarTube Early 2011 Aozora Tweaks from both AtoZenne and thxdeeply on Github respectively. Altered by me. 
+@author         MrRoboto1212
+@author         AtoZenne - ALTERED FROM AUTHOR'S ORIGINAL CODE
+@author         thxdeeply - ALTERED FROM AUTHOR'S ORIGINAL CODE - borrowed code for better playlist
+==UserStyle== 
+
+ FOR EMBED PLAYER  MISC WATCH PAGE ELEMENTS, GENERAL HOMEPAGE 
+ For StarTube Beta 2.4.2, 2008 layout - Embed player must be selected underneath Player tab 
+ DISCLAIMER RESULTS MAY VARY, I HAVE CHANGED THINGS WITHIN MY PERSONAL V3  STARTUBE SETTINGS. NOT GUARANTEED TO LOOK PRECISE TO ANYONE ELSE 
+ ADDITIONAL STARTUBE'S CODE IS BEING OVERHAULED AS THE AUTHOR SAYS FOR THE COMING MAJOR UPDATES, SO THIS MAY NOT FUNCTION FOR LONG 
+
+ SPAGHETTI CODE - DESPITE THIS, THERE ARE A FEW NOTES, WITH SOME BEING IMPORTANT; I APOLOGIZE! 
+
+.player-width {
+    width 480px; 
+    border none !important; 
+}
+
+ PLAYER CONTROLS UNUSABLE IN NON-FULLSCREEN (unless, sort of, on native 43 videos - scrobble bar is available to use) 
+ THIS MEANS TO MANUALLY SKIP AROUND IN ANY VIDEO ENTER FULLSCREEN, SKIP, THEN EXIT FULLSCREEN. ARROW KEYS STILL WORK 
+ BE WARY OF 43 ASPECT VIDEOS UPLOADED IN 169 FORMAT - STUPID HASSLE, PAIN MESSING WITH `TRANSFORM` ELEMENT BELOW; I APOLOGIZE (though I sorta think it's a fun game) 
+.html5-video-player {
+    height inherit !important; 
+    width inherit !important; 
+    object-fit fill !important; 
+    display block !important; 
+     IMPORTANT!! 
+    CHANGE FROM (1.3333, 1.45) TO (1.27, 1.45) FOR SLIGHTLY SQUISHED HORIZONTAL VID (a few milimeters on each side)
+    (1.0, 1.088) FOR WATCHING NATIVE 43 VIDEOS 
+}
+
+.html5-video-player .video-stream {
+  display block;
+  width -moz-available !important;
+  height -moz-available !important;
+  position absolute;
+  left 0px !important;
+  right 0px !important;
+  top 0px !important;
+  bottom 0px !important;
+  margin-block auto !important;
+}
+
+html[data-player-size=fullscreen] .html5-video-player .video-stream {
+    margin-inline auto !important;
+    width 100% !important;
+    height 100% !important;
+}
+ SEE COMMENTS BELOW FOR MORE INFO 
+
+ UNSURE WHAT TO DO TO MAKE CONTROLS FIT IN 43 VIDEO FRAME (how to go about separating the streamed video itself with the player controls)
+Elements Idk where the plain [is-four-three-video_] tag is, otherwise I would use it to correct player controls issue 
+[is-four-three-to-sixteen-nine-video_]
+[is-extra-wide-video_]
+[full-bleed-player][full-bleed-no-max-width-columns])not([fixed-panels]) #primary.ytd-watch-flexy 
+
+ RELATED (elements I have used to try and fix said issue, checking every one individually)
+.html5-video-container .ytp-exp-bottom-control-flexbox.ytp-modern-caption.ytp-livebadge-color.ytp-fit-cover-video.ytp-title-enable-channel-logo.ytp-fine-scrubbing-exp.ytp-embed.ytp-embed-playlist.playing-mode.ytp-xsmall-width-mode {
+    height480px !important; 
+    width 360px !important; 
+} 
+
+ MITIGATION FOR ABOVE ISSUE - DISABLES GRADIENTS, SO THEY DON'T APPEAR WHILE IN 43 FRAME UPON HOVER 
+.ytp-gradient-bottom, .ytp-gradient-top {
+    displaynone !important; 
+}
+ SUBSCRIBE BUTTON MAY HAVE YOUTUBE LOGO WITHIN IT FOR A FEW SECONDS WHILE IT LOADS, IF IT DOES NOT GO AWAY, REFRESH - STARTUBE ISSUE WITH 2008 LAYOUT AS OF 042125 
+[stargazer-sub] .oz_frame .yt-uix-button-subscribe-branded, [stargazer-sub] .oz_frame .yt-uix-button-subscribed-branded, .st-stargazer-sub .yt-uix-button-subscribe-branded, .st-stargazer-sub .yt-uix-button-subscribed-branded, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribe-branded, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribed-branded {
+    height 20px !important; 
+    width fit-content !important;
+}
+[stargazer-sub] .oz_frame .yt-uix-button-subscribe-branded, [stargazer-sub] .oz_frame .yt-uix-button-subscribed-branded, .st-stargazer-sub .yt-uix-button-subscribe-branded, .st-stargazer-sub .yt-uix-button-subscribed-branded, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribe-branded, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribed-branded {
+    background linear-gradient(to top,#e47e00,#ff9900) !important;
+    border 1px solid #e3a359 !important;
+} 
+[stargazer-sub]  .oz_frame .yt-uix-button-subscribed-branded {  glitch with subscribed channels, off-center very slightly 
+    text-align center !important; 
+    margin-left 12px !important; 
+    margin-top -7px !important; 
+}
+[stargazer-sub] .oz_frame .yt-uix-button-subscribe-branded .yt-uix-button-content span, [stargazer-sub] .oz_frame .yt-uix-button-subscribed-branded .yt-uix-button-content span, .st-stargazer-sub .yt-uix-button-subscribe-branded .yt-uix-button-content span, .st-stargazer-sub .yt-uix-button-subscribed-branded .yt-uix-button-content span, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribe-branded .yt-uix-button-content span, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribed-branded .yt-uix-button-content span {
+    color white !important;
+  text-align center !important;
+  margin-inline auto !important;
+  margin-top -7px !important;
+}
+[stargazer-sub] .oz_frame .yt-uix-button-subscribe-brandedhover, [stargazer-sub] .oz_frame .yt-uix-button-subscribed-brandedhover, .st-stargazer-sub .yt-uix-button-subscribe-brandedhover, .st-stargazer-sub .yt-uix-button-subscribed-brandedhover, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribe-brandedhover, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribed-brandedhover, .stargazer-yellow-buttonhover {
+    background linear-gradient(to top,#e47e00,#ff9900) !important;
+    border 1px solid #e3a359 !important;
+}
+[stargazer-sub] .oz_frame .yt-uix-button-subscribe-brandedhover span span, [stargazer-sub] .oz_frame .yt-uix-button-subscribed-brandedhover span span, .st-stargazer-sub .yt-uix-button-subscribe-brandedhover span span, .st-stargazer-sub .yt-uix-button-subscribed-brandedhover span span, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribe-brandedhover span span, [stargazer-sub] #pagenot(.watch) .yt-uix-button-subscribed-brandedhover span span {
+    text-decoration none !important;
+        color black !Important;
+}
+[exp-aozora-comments] .distiller_yt-post_comment_section .entries .contents  .continuation_item_wrapper .jfk-button span, [exp-aozora-comments] .profileLink, [exp-aozora-comments] .distiller_yt-post_comment_section .link_action .link_action_text, [exp-aozora-comments] hover .run  .proflinkWrapper  .proflinkPrefix, [exp-aozora-comments] hover .run  .proflinkWrapper  .ot-hashtag, [exp-aozora-comments] hover .run  .proflinkWrapper  .proflink, [exp-aozora-comments] .proflinkPrefix, [exp-aozora-comments] .ot-hashtag, [exp-aozora-comments] .proflink, [exp-aozora-comments] .distiller_yt-thread_user-content .run-link, [exp-aozora-comments] .load-more-link {
+    color #03c !important; 
+    text-decoration underline; 
+    font-weight bold;
+}
+.branded-page-v2-secondary-col .branded-page-box {
+    display always !important;  DISAPPEARS HALF THE TIME ANYWAY - STARTUBE ISSUE 
+}
+ NOT NEEDED
+.html5-video-container { 
+    margin-left -80px; 
+} 
+
+
+ PLAYLIST SECTION  
+
+ THIS IS NOT MY CODE - SUPPORT THEM 
+ thxdeeply on Github - StarTube Early 2011 Aozora Tweaks 
+ httpsuserstyles.worldstyle18439startube-early-2011-aozora-tweaks 
+ Any code with `!important` is an alteration of the original code 
+
+.playlist #watch7-playlist-bar-controls, .playlist .watch7-playlist-bar-left .title, .playlist .watch7-playlist-bar-left .yt-user-namehover, .playlist .watch7-playlist-bar-notifications {
+    color #000;
+}
+
+#watch7-playlist-tray .playlist-bar-item-playing {
+    border-color #d1e1fa;
+    background #d1e1fa;
+}
+#watch7-playlist-tray .video-list-item {
+    background #fff;
+    border-top 0;
+    border-bottom 0;
+    text-shadow none;
+}
+#watch7-playlist-tray .playlist-bar-item-playing .stat, #watch7-playlist-tray .video-list-item .title {
+    color #03c;
+}
+#watch7-playlist-tray .video-list-item .title {
+    font-weight normal;
+    font-size 13px;
+} 
+#watch7-playlist-bar-controls { 
+    border-left none !important; 
+    background #eeeeee;
+} 
+.watch7-playlist-bar-left {
+    color #000;
+    background #eeeeee;
+}
+.watch7-playlist-bar-notifications {
+    color #000;
+    background #eeeeee;
+}
+.watch7-playlist-bar-secondary-controls {
+    color #000;
+    background #eeeeee;
+}
+.watch7-playlist-bar {
+    border-top 1px solid #cccccc;
+    border-bottom 1px solid #cccccc;
+    margin-right 153px !important; 
+}
+.watch7-playlist-bar-left {
+    border-left 1px solid #cccccc;
+}
+.watch7-playlist-bar-right {
+    border-right 1px solid #cccccc;
+}
+a.spf-linkfocus {
+    background-color #d1e1fa;
+}
+#watch7-playlist-tray .video-list-item ahover {
+    background #d1e1fa;
+}
+.watch7-playlist-bar-right {
+    position fixed !important; 
+    padding-left 533px !important; 
+}
+.watch7-playlist-bar-left, .watch7-playlist-bar {
+    height 23px;
+    line-height 23px; 
+}
+.watch7-playlist-bar-secondary-controls {
+    height 23px;
+    line-height 23px; 
+    padding-right 10px !important; 
+}
+#watch7-playlist-bar-controls {
+    height 23px;
+    line-height 23px;
+    max-width 900px !important; 
+    padding-left 0px !important; 
+    margin-left -100px !important; 
+}
+.watch7-playlist-bar-left, .watch7-playlist-bar-right, .watch7-playlist-bar {
+    margin-left 8px !important;
+}
+.watch7-playlist-bar-secondary-controls {
+    padding 0 0;
+}
+.playlist .watch7-playlist-bar-left .title {
+    font-size 14px;
+    font-weight bold;
+}
+.playlist .paused .watch7-playlist-bar-notifications, .playlist .watch7-playlist-bar-left .yt-user-name {
+    color #000;
+}
+.yt-uix-button-icon-playlist-bar-prev, .rtl .yt-uix-button-icon-playlist-bar-next {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) 0px -100px;
+    background-size auto;
+    width 13px;
+    height 15px;
+}
+.yt-uix-button-icon-playlist-bar-prevhover, .rtl .yt-uix-button-icon-playlist-bar-nexthover {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) 0px -116px;
+    background-size auto;
+    width 13px;
+    height 15px;
+}
+.yt-uix-button-icon-playlist-bar-next, .rtl .yt-uix-button-icon-playlist-bar-prev {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) -14px -100px;
+    background-size auto;
+    width 13px;
+    height 15px;
+}
+.yt-uix-button-icon-playlist-bar-nexthover, .rtl .yt-uix-button-icon-playlist-bar-prevhover {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) -14px -116px;
+    background-size auto;
+    width 13px;
+    height 15px;
+}
+.yt-uix-button .yt-uix-button-icon-playlist-bar-autoplay {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) -50px -100px;
+    background-size auto;
+    width 17px;
+    height 16px;
+}
+.yt-uix-button .yt-uix-button-icon-playlist-bar-autoplayhover {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) -50px -116px;
+    background-size auto;
+    width 17px;
+    height 16px;
+}
+.yt-uix-button .yt-uix-button-icon-playlist-bar-shuffle {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) -68px -101px;
+    background-size auto;
+    width 17px;
+    height 13px;
+}
+.yt-uix-button .yt-uix-button-icon-playlist-bar-shufflehover {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) -68px -117px;
+    background-size auto;
+    width 17px;
+    height 13px;
+}
+.yt-uix-button-icon-playlist-bar-close {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) -109px -100px;
+    height 13px;
+    width 13px;
+    filter invert(0);
+}
+.yt-uix-button-icon-playlist-bar-closehover {
+    background no-repeat url(httpsraw.githubusercontent.comthxdeeplytweaksrefsheadsmainStarTubeYT2011master-vfl181382_2.png) -109px -116px;
+    height 13px;
+    width 13px;
+    filter invert(0);
+}
+.yt-uix-button[disabled], .yt-uix-button[disabled]hover, .yt-uix-button[disabled]active, .yt-uix-button[disabled]focus {
+    opacity 1;
+}
+.yt-uix-button-player-controls .yt-uix-button-icon {
+    opacity 1;
+}
+.yt-uix-button-player-controlshover .yt-uix-button-icon {
+    opacity 1;
+}
+#watch7-playlist-tray .video-list-item a { 
+    padding 2px 0px 2px 24px !important; 
+    margin 5px 0 5px 20px;
+}
+#watch7-playlist-tray, #watch7-playlist-tray-mask {
+    background #ffffff;
+}
+#watch7-playlist-tray .video-list-itemhover {
+    border-color transparent;
+    background #fff;
+}
+#watch7-playlist-tray .video-list-item .count {
+    position absolute;
+    visibility hidden;
+}
+#watch7-playlist-tray-container {
+    border-bottom 1px solid #ccc;
+    border-right 1px solid #ccc;
+    height 389px; 
+    width 352px !important;
+}
+#watch7-playlist-tray .video-list-item .video-thumb {
+    background #fff;
+    border 1px solid #d3d3d3;
+    border-radius 3px; 
+    padding 4px; 
+    width 64px !important;
+} 
+#watch7-playlist-tray .video-list-item .ux-thumb-wrap {
+    margin-top 2px !important;
+    margin-bottom 2px !important;
+}
+#watch7-playlist-tray .video-list-item .title {
+    margin-bottom 0;
+    margin-top 5px;
+}
+ ADDED 
+#watch7-playlist-tray .video-list-itemlast-of-type {
+    margin-bottom 2px !important; 
+}
+#watch7-playlist-tray-trim {
+    displaynone !important; 
+}
+#watch-playlist-privacy-icon {
+    displaynone !important; 
+}
+.no-recent-activity {
+    displaynone !important; 
+}
+.distiller_yt-sb .action_bar .right_actions {
+    padding-right 167px !important; 
+}
+
+[static] #yt-masthead, [static] .site-center-aligned #gbzw, [static] .site-center-aligned #gb, [static] .site-center-aligned #gbz, [static] #masthead-appbar, [static] #masthead-expanded, [static] #masthead-expanded-container {
+    width 819px !important; 
+}
+#masthead-positioner #masthead-expanded {
+    margin-right 3000x !important; 
+    padding-right 73px !important; 
+}
+
+[static] #stargazer-header {
+  width 870px;
+  margin 0 auto;
+}
+
+html[static] .site-center-aligned #page #content {
+  max-width 870px !important;
+  width 870px !important;
+  min-width unset;
+}
+
+[stargazer-styles][location=feed-recs][ly^=stargazer2008] .feed-item-header {
+  position absolute;
+  left 500px;
+  top 0;
+}
+
+[stargazer-styles][location=feed-recs] .branded-page-v2-primary-col .yt-lockup-content {
+  width 350px;
+}
+
+[stargazer-styles][location=feed-recs][ly^=stargazer2008] .branded-page-v2-primary-col .yt-lockup-content .yt-lockup-meta {
+  position absolute;
+  left 500px;
+  top 30px;
+}
+
+[stargazer-styles][location=feed-recs][ly^=stargazer2008] .branded-page-v2-primary-col .yt-lockup-video .video-time {
+  position absolute;
+  left 488px;
+  top 50px;
+  width fit-content;
+  padding 0;
+  background none;
+  color #000 !important;
+  opacity 1;
+  display block !important;
+}
+
+    [static]not([topbar]) #stargazer-header #masthead-search-terms {
+  border 1px solid #999;
+  box-shadow none;
+  border-radius 0;
+  width 211px;
+  height 20px;
+  background #fff;
+}
+    .st-sth .stargazer-header-lower {
+  width 100%;
+  height 37px;
+  background url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat 0px -63px;
+  position relative;
+  border-radius 5px;
+  background-size 100%;
+}
+    .st-sth #search-btn {
+  background #e9e9ed;
+  border 1px solid #8f8f9d;
+  height 22px;
+  padding 0 5px;
+  border-radius 4px;
+  cursor unset !important;
+  margin-left 2px;
+  margin-top -1px;
+}
+    .st-sth .stargazer-upload, .st-sbh #stargazer-upload-dd {
+  position absolute;
+  right 7px;
+  top -30px;
+}
+ #sb-button-notify, .yt-masthead-user-icon {
+visibility collapse !important;
+        width 0px !important;
+    }
+
+    .stargazer-tab.active {
+  border-color #d5d5d5;
+    border-top-color rgb(213, 213, 213);
+  border-top-color #d8d8d8;
+  background url(httpsweb.archive.orgweb20071112035632im_httpwww.youtube.comimgmaster.gif) repeat-x -145px -28px !important;
+  color #333;
+}
+    .stargazer-tab{
+         width 120px !important; 
+        
+    }
+    .stargazer-tab span {
+        
+        font-size 1em !important;
+        font-family arial;
+    }
+.stargazer-upload  .stargazer-button.stargazer-yellow-buttonbefore {
+    content ;
+    background url(httpsweb.archive.orgweb20071112125357im_httpwww.youtube.comimgmaster.gif) no-repeat -123px 0px;
+    width22px;
+    height 23px;
+    margin-inline-end 8px;
+}
+
+.stargazer-upload  .stargazer-button.stargazer-yellow-button, .stargazer-upload  .stargazer-button.stargazer-yellow-buttonhover {
+    background none !important;
+  border 0px !important;
+  font-weight var(--bold) !important;
+    color var(--03c) !important;
+    text-decoration underline !important;
+    padding 0px !important;
+    font-size 14px !important;
+}
+
+.st-sth .stargazer-upload, .st-sbh #stargazer-upload-dd {
+  position absolute;
+  right 0px !important;
+  top -30px;
+}
+
+html {
+  font-family Arial, Helvetica, sans-serif !important;
+}
+
+.st-url-option input {
+  width 300px;
+  font-size 10px;
+  border 1px solid #8f8f9d;
+  padding 2px;
+  border-radius 2px;
+  outline none;
+}
+
+[exp-aozora-comments] .distiller_yt-thread .commenthover {
+  background-color #fff;
+}
+
+ #st-share-tabhover .st-watch-tab-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -265px -18px !important;
+}
+
+ #st-favorite-buttonhover .st-watch-tab-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -287px -18px;
+}
+
+#st-addto-buttonhover .st-watch-tab-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -309px -18px;
+}
+
+#st-report-buttonhover .st-watch-tab-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -331px -18px;
+}
+
+#st-share-tab .st-watch-tab-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -265px 0px !important;
+}
+
+ #st-favorite-button .st-watch-tab-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -287px 0px;
+}
+
+#st-addto-button .st-watch-tab-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -309px 0px;
+}
+
+#st-report-button .st-watch-tab-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -331px 0px;
+}
+
+.html5-main-video, .html5-video-content {
+  position absolute;
+  width 100% !important;
+  height 100% !important;
+  outline 0;
+}
+
+.st-owner-subtitle  .st-joined-text.st-owner-before-text.hid, .st-owner-vid-part  .st-videos-before-text.st-owner-before-text.hid {
+  font-size 11px;
+  color #000 !important;
+  margin 0;
+}
+[wl^=w4a] .st-owner-vid-part {
+  margin-top 0px;
+}
+
+[wl=w4a] .st-join-date, [wl=w4a] .st-short-video-count {
+  font-size 11px;
+  color #000;
+  font-weight bold;
+}
+
+[wl=w4a] .st-owner-before-text {
+  font-size 12px;
+  color #000;
+}
+
+[wl^=w4] #st-side-owner-row .st-sub-button {
+  position absolute;
+  right -12px;
+  top 30px;
+}
+
+#stargazer-header #masthead-search input {
+  top -5px;
+}
+
+.distiller_yt-post_data {
+  display flex;
+  flex-direction column !important;
+}
+
+.startube-comment .action_bar {
+  position relative;
+  right 100px;
+}
+
+.startube-reply .action_bar {
+     position relative;
+    right 130px;
+}
+
+[expanded] .st-side-panel-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -423px 0px;
+}
+.st-side-panel-icon {
+  background transparent url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat scroll -423px -20px;
+    margin-inline-end 6px;
+}
+
+[aozora-styles] #watch7-sidebar .video-list-item ahover {
+  background #fff;
+}
+
+@-moz-document url-prefix(httpswww.youtube.comwatch) {
+ WATCH PAGE  
+ COMMENTED OUT ELEMENTS ARE SIMPLE ALTERATIONS 
+
+
+KNOWN BUGS 
+- Player controls in 43 frame are cropped - FIX SOMEHOW - Mirrors notes in EMBED PLAYER section
+- Elements not loading on watch page when clicking any video (i.e User panel, video title, Rating section under video) - this is due to StarTube and happens OFTEN - refresh the page 
+- Upon starting a video, there may be a large black box and some cropped player controls visible in the 43 frame - double click the video into fullscreen, then exit fullscreen 
+ 
+
+[wl^=w4] .st-owner-name a {
+    font-size 15px; 
+    text-decoration underline 
+}
+.st-owner-title, .st-owner-name {
+    max-width 110px !important;  
+    white-space nowrap !important;
+    overflow hidden !important;
+    text-overflow ellipsis !important;   why does overflow not want to work possibly cause it's not present in the inline html descriptors 
+    display inline-block !important;
+}
+.st-owner-icon {
+    display none !important; 
+}
+
+
+[aozora-styles] .related-list-item .video-time {
+    display none;
+} 
+.video-time {
+    margin-right 3px !important; 
+    margin-bottom 3px !important; 
+}
+.video-list .video-list-item .title {
+    font-size 12px !important; 
+    text-decoration underline; 
+    font-weight bold !important 
+}
+
+.watch7-playlist-tray .video-list-item a {
+    background-size auto !important; 
+}
+#st-ratings-info-row {
+    width 370px !important;
+    border 0px !important;
+    margin-inline 50px !important;
+}
+    
+    .st-stars-rating-count {
+        position absolute !important;
+  top 28px !important;
+  right 236px !important;
+    }
+#st-watch-tabs-row {
+    width 480px !important;
+    border 0px !important;
+}
+.action-panel-content, #watch7-content {
+    width 480px !important;
+}
+    
+    #watch7-content {
+        margin-left 50px !important;
+}
+    
+    .share-panel-url {
+        width 280px !important;
+        font-size 10px;
+    }
+    
+    [compact-date=on] .related-video .extra {
+width 0px !important;
+  display inline-block !important;
+  visibility collapse;
+}
+    [aozora-styles] .yt-badge, .stat.alt.badge {
+  visibility collapse !important;
+  width 0px;
+}
+    .share-panel-start-at-time {
+  width 50px;
+  padding 0px;
+}
+    .share-panel-url-containerbefore {
+        content Share;
+        position absolute;
+  left 0px;
+        top 28px;
+    }
+    .share-panel-url-container {
+        margin-left 48px !important;
+    }
+.st-views-before-text, .st-ratings-before-text {
+    color #6f6f6f !important;
+}
+    
+    .st-stargazer-sub .yt-uix-subscription-preferences-button {
+        visibility hidden !important;
+    }
+ .st-view-count {
+    font-weight bold !important;
+    font-size 16px !important;
+} 
+.st-watch-tab-inner span { 
+    border-bottom 2px solid #03c 
+    text-decoration underline !important; 
+} 
+[static] [wl^=w4] #watch7-sidebar {
+    width360px !important;
+    max-width 360px !important;
+}
+    
+[static] [wl^=w4] #page.watch {
+    margin-inline auto !important;
+}
+.st-sth .stargazer-header-lower {
+    border-radius 10px 10px 0px 0px !important
+}
+.stargazer-tab {
+    border-radius 1px !important;
+} 
+
+
+.distiller_yt_headline {
+    color black !important;
+    font-weight bold !important;
+    font-size 14px;
+}
+[exp-epic-styling] .checkbox-on-off  label, [exp-epic-styling] .distiller_yt_headline b, [cosmic-styles] .checkbox-on-off  label, [cosmic-styles] .distiller_yt_headline b, [aozora-styles] .checkbox-on-off  label, [aozora-styles] .distiller_yt_headline b {
+    color black !important;
+    font-weight bold !important;
+}
+
+[exp-epic-styling] .all-comments, [cosmic-styles] .all-comments, [aozora-styles] .all-comments {
+    border-bottom transparent !important;
+}
+.st-scrollable-panel .st-side-panel-inner {
+    height 385px !important;
+}
+    
+.st-watch-tab-icon {
+    width 22px;
+  display block;
+  height 18px;
+}
+    
+    #st-side-banner-row {
+        visibility collapse;
+        height 0px;
+    }
+.st-watch-tab {
+    margin-top -115px !important;
+    background #fff !important;
+    border 0px !important;
+    text-decoration underline !important;
+    color #03c !important;
+}
+    
+#st-ratings-info-row {
+    margin-top 40px !important;
+    z-index 4 !important;
+}
+[static] #stargazer-header {
+    width 875px !important;
+    align-items center !important; 
+}
+
+[exp-legacy-comments] .comment header {
+    background #eeeeee;
+    height 25px;
+}
+
+[aozora-home][aozora-styles] .home .branded-page-v2-primary-col {
+    width 895px;
+}
+.multirow-shelf {
+    width 900px;
+}
+.share-panel-buttons {
+  margin-bottom 10px;
+  height 0px !important;
+  visibility hidden;
+}
+    
+  #share-services-container,  .share-group {
+  visibility collapse !important;
+      height0px !important;
+}
+    .action-panel-content {
+  padding 0px !important;
+}
+    [exp-legacy-comments] #watch-discussion {
+        padding 0px !important;
+    }
+[exp-legacy-comments] .distiller_yt_instance {
+    margin-top 30px !important
+}
+    
+ #sb-button-notify, .yt-masthead-user-icon {
+visibility collapse !important;
+        width 0px !important;
+    }
+    
+    #yt-masthead-user-displayname {
+        margin 0px !important;
+    }
+        .st-sth .stargazer-header-lower {
+  width 100%;
+  height 37px;
+  background url(httpsweb.archive.orgweb20071113200036im_httpyoutube.comimgmaster.gif) no-repeat 0px -63px;
+  position relative;
+  border-radius 5px;
+  background-size 100%;
+}
+        .st-sth #search-btn {
+  background #e9e9ed;
+  border 1px solid #8f8f9d;
+  height 22px;
+  padding 0 5px;
+  border-radius 4px;
+  cursor unset !important;
+  margin-left 2px;
+  margin-top -1px;
+}
+    .st-sth .stargazer-upload, .st-sbh #stargazer-upload-dd {
+  position absolute;
+  right 7px;
+  top -30px;
+}
+        [static]not([topbar]) #stargazer-header #masthead-search-terms {
+  border 1px solid #999;
+  box-shadow none;
+  border-radius 0;
+  width 211px;
+  height 20px;
+  background #fff;
+}
+    .stargazer-tab.active {
+  border-color #d5d5d5;
+    border-top-color rgb(213, 213, 213);
+  border-top-color #d8d8d8;
+  background url(httpsweb.archive.orgweb20071112035632im_httpwww.youtube.comimgmaster.gif) repeat-x -145px -28px;
+  color #333;
+}
+    .stargazer-tab{
+         width 118px !important; 
+         margin-right 10px !important;
+    }
+    .stargazer-tab span {
+        font-size 12px !important;
+  font-family arial;
+  font-weight bolder;
+    }
+    
+    .st-url-option label {
+  min-width 0px !important;
+}
+    
+    [wl^=w4] #st-watch-above-container {
+  position absolute;
+  top -29px;
+  width 870px;
+  margin-inline auto !important;
+  right 0px !important;
+  left 0px;
+}
+    html[static][data-player-size=small] .site-center-aligned #player {
+  width 870px !important;
+  min-width 870px;
+}
+    html[static] .site-center-aligned #page #content {
+  max-width 970px !important;
+  width 970px !important;
+  min-width unset;
+}
+}
+
+@-moz-document url(httpswww.youtube.comfeed) {
+ MISC HOMEPAGE 
+
+.feed-container {
+    max-width 640px;
+}
+.multirow-shelf {
+    max-width 640px;
+} 
+[aozora-home][aozora-styles] .yt-lockup-thumbnail {
+    border-radius 0px;
+    padding 1px;
+} 
+.branded-page-module-avatar {
+    display none !important;
+} 
+.branded-page-module-title-text-v2 .link {
+     padding-left 0 !important;
+} 
+.video-time {
+    margin-right 0px !important; 
+    margin-bottom0px !important; 
+}
+}
